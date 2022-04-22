@@ -12,5 +12,7 @@ RUN add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
-RUN apt-get update  -qq \
-    && apt-get install docker-ce=17.12.1~ce-0~debian -y
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
+    && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" \
+    && apt-get update \
+    && apt-get install docker-ce=18.03.1~ce-0~ubuntu -yq
